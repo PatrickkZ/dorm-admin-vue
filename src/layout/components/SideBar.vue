@@ -1,11 +1,8 @@
 <template>
-  <el-aside width="200px">
     <el-menu
         default-active=""
         router
         class="el-menu-vertical-demo"
-        background-color="#545c64"
-        text-color="#fff"
         active-text-color="#ffd04b">
       <div v-for="(item,i) in adminMenus" :key="i">
         <div v-if="item.nameZh==='用户管理'">
@@ -15,8 +12,14 @@
               <span>{{ item.nameZh }}</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/admin/student">学生用户</el-menu-item>
-              <el-menu-item index="/admin/user">后台用户</el-menu-item>
+              <el-menu-item index="/admin/student">
+                <i class="el-icon-document"></i>
+                <span slot="title">学生用户</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/user">
+                <i class="el-icon-document"></i>
+                <span slot="title">后台用户</span>
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </div>
@@ -32,7 +35,6 @@
 <!--        <span slot="title">{{item.nameZh}}</span>-->
 <!--      </el-menu-item>-->
     </el-menu>
-  </el-aside>
 </template>
 
 <script>

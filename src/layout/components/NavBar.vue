@@ -6,7 +6,7 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-    <el-menu-item index="1" style="font-size: 20px;float: right">注销登录</el-menu-item>
+    <el-menu-item index="1" style="font-size: 20px;float: right">个人中心</el-menu-item>
   </el-menu>
 </template>
 

@@ -20,24 +20,26 @@ router.beforeEach((to, from, next) => {
       if (store.state.username && to.path.startsWith('/admin')) {
         initAdminMenu(router, store)
       }
-      next()
       // 如果前端没有登录信息则直接拦截，如果有则判断后端是否正常登录（防止构造参数绕过）
-      // if (to.meta.requireAuth) {
-      //   if (store.state.username) {
-      //     axios.get('/authentication').then(resp => {
-      //       if (resp) {
-      //         next()
-      //       }
-      //     })
-      //   } else {
-      //     next({
-      //       path: 'login',
-      //       query: {redirect: to.fullPath}
-      //     })
-      //   }
-      // } else {
-      //   next()
-      // }
+      if (to.meta.requireAuth) {
+        if (store.state.username) {
+          axios.post('/authentication',{
+              username: store.state.username
+          },{headers: {'Content-Type': 'text/plain'}})
+            .then(resp => {
+            if (resp.data.code === 200) {
+              next()
+            }
+          })
+        } else {
+          next({
+            path: 'login',
+            query: {redirect: to.fullPath}
+          })
+        }
+      } else {
+        next()
+      }
     }
 )
 

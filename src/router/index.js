@@ -8,7 +8,9 @@ import Layout from "@/layout/Layout";
 import StudentInfo from "@/layout/components/info/StudentInfo";
 import DormInfo from "@/layout/components/info/DormInfo";
 import UserInfo from "@/layout/components/info/UserInfo";
-import AssignDorm from "@/layout/components/info/AssignDorm";
+// import AssignDorm from "@/layout/components/info/AssignDorm";
+import DormOperation from "@/layout/components/info/DormOperation";
+import DormStatistic from "@/layout/components/info/DormStatistic";
 
 Vue.use(Router)
 
@@ -24,26 +26,49 @@ export default new Router({
                     path: '/admin',
                     name: 'Layout',
                     component: Layout,
+                    meta: {
+                        requireAuth: true
+                    },
                     children: [
                         {
                             path: 'student',
                             name: 'StudentInfo',
-                            component: StudentInfo
+                            component: StudentInfo,
+                            meta: {
+                                requireAuth: true
+                            },
                         },
                         {
                             path: 'dorm',
                             name: 'DormInfo',
-                            component: DormInfo
+                            component: DormInfo,
+                            meta: {
+                                requireAuth: true
+                            },
                         },
                         {
                             path: 'user',
                             name: 'UserInfo',
-                            component: UserInfo
+                            component: UserInfo,
+                            meta: {
+                                requireAuth: true
+                            },
                         },
                         {
-                            path: 'assign',
-                            name: 'AssignDorm',
-                            component: AssignDorm
+                            path: 'dorm-operation',
+                            name: 'DormOperation',
+                            component: DormOperation,
+                            meta: {
+                                requireAuth: true
+                            },
+                        },
+                        {
+                            path: 'dorm-statistic',
+                            name: 'DormStatistic',
+                            component: DormStatistic,
+                            meta: {
+                                requireAuth: true
+                            },
                         }
                     ]
                 }

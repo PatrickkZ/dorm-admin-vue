@@ -1,11 +1,22 @@
 <template>
+  <div>
+    <el-dialog
+        title="提示"
+        :visible.sync="dialogVisible"
+        width="30%"
+    append-to-body>
+      <span>确定要退出吗</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="logout">确 定</el-button>
+  </span>
+    </el-dialog>
   <el-card class="admin-header">
-    <a href="/index">
-      <img src="../assets/icon1.jpg" alt="" width="55px" style="float: left;margin-top: -5px;">
-    </a>
-    <span style="font-size: 32px;font-weight: bold;position:absolute;left: 100px">后台管理</span>
-    <i class="el-icon-switch-button" v-on:click="logout" style="font-size: 40px;float: right"></i>
+      <img src="../assets/icon1.jpg" alt="" width="30px" style="float: left;margin-top: -5px;">
+    <span style="font-size: 20px;font-weight: bold;position:absolute;left: 70px">宿舍后台管理系统</span>
+    <i class="el-icon-switch-button" v-on:click="dialogVisible = true" style="font-size: 30px;float: right"></i>
   </el-card>
+  </div>
 </template>
 
 <script>
@@ -13,18 +24,23 @@
 
 export default {
   name: 'Header',
+  data() {
+    return {
+      dialogVisible: false
+    }
+  },
   methods: {
     logout () {
-      // var _this = this
-      // this.$axios.get('/logout').then(resp => {
-      //   if (resp && resp.data.code === 200) {
-      //     _this.$store.commit('logout')
-      //     _this.$router.replace('/index')
-      //     // 清空路由，防止路由重复加载
-      //     const newRouter = createRouter()
-      //     _this.$router.matcher = newRouter.matcher
-      //   }
-      // }).catch(failResponse => {})
+      const _this = this;
+      this.dialogVisible = false
+      this.$axios.get('/logout').then(resp => {
+        if (resp && resp.data.code === 200) {
+          _this.$store.commit('logout')
+          _this.$router.replace('/login')
+        }
+      }).catch(failResponse => {
+        console.log(failResponse)
+      })
     }
   }
 }
@@ -32,9 +48,9 @@ export default {
 
 <style scoped>
 .admin-header {
-  height: 80px;
+  height: 60px;
   opacity: 0.85;
-  line-height: 40px;
+  line-height: 30px;
   min-width: 900px;
 }
 .el-icon-switch-button {
