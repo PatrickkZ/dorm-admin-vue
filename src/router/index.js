@@ -11,6 +11,7 @@ import UserInfo from "@/layout/components/info/UserInfo";
 // import AssignDorm from "@/layout/components/info/AssignDorm";
 import DormOperation from "@/layout/components/info/DormOperation";
 import DormStatistic from "@/layout/components/info/DormStatistic";
+import Welcome from "@/layout/components/info/Welcome";
 
 Vue.use(Router)
 
@@ -66,6 +67,14 @@ export default new Router({
                             path: 'dorm-statistic',
                             name: 'DormStatistic',
                             component: DormStatistic,
+                            meta: {
+                                requireAuth: true
+                            },
+                        },
+                        {
+                            path: 'welcome',
+                            name: 'Welcome',
+                            component: Welcome,
                             meta: {
                                 requireAuth: true
                             },

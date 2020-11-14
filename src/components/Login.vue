@@ -52,7 +52,7 @@ export default{
               const data = resp.data.result;
               _this.$store.commit('login', data)
               const path = _this.$route.query.redirect;
-              _this.$router.replace({path: path === '/' || path === undefined ? '/admin' : path})
+              _this.$router.replace({path: path === '/' || path === undefined ? '/admin/welcome' : path})
             } else {
               this.$alert(resp.data.message, '提示', {
                 confirmButtonText: '确定'
