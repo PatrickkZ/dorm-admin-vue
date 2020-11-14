@@ -184,7 +184,7 @@ export default {
   },
   methods: {
     loadStudents(){
-      this.$axios.get('/admin/student').then(resp => {
+      this.$axios.get('/admin/user/student').then(resp => {
         if (resp && resp.data.code === 200) {
           this.students = resp.data.result
           this.loading = false
@@ -200,7 +200,7 @@ export default {
     },
     modifyStuInfo(student){
       this.dialogFormVisible1 = false
-      this.$axios.put('/admin/student', {
+      this.$axios.put('/admin/user/student', {
         studentNum: student.studentNum,
         name: student.name,
         gender: student.gender,
@@ -222,7 +222,7 @@ export default {
         return
       }
       this.dialogFormVisible2 = false
-      this.$axios.put('/admin/student/password', {
+      this.$axios.put('/admin/user/student/password', {
         studentNum: student.studentNum,
         password: this.resetPassword
       }).then(resp => {
@@ -237,7 +237,7 @@ export default {
     },
     addStudent(){
       this.dialogFormVisible3 = false
-      this.$axios.post('/admin/student/add', {
+      this.$axios.post('/admin/user/student/add', {
         studentNum: this.newStudent.studentNum,
         name: this.newStudent.name,
         gender: this.newStudent.gender,

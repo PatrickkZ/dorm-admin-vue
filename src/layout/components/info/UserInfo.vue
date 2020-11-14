@@ -119,14 +119,14 @@ export default {
   },
   methods: {
     loadUsers(){
-      this.$axios.get('/admin/user').then(resp => {
+      this.$axios.get('/admin/user/background').then(resp => {
         if (resp && resp.data.code === 200) {
           this.users = resp.data.result
         }
       })
     },
     loadRoles(){
-      this.$axios.get('/admin/role').then(resp => {
+      this.$axios.get('/admin/user/background/role').then(resp => {
         if (resp && resp.data.code === 200) {
           this.roles = resp.data.result
         }
@@ -151,7 +151,7 @@ export default {
         }
       }
 
-      this.$axios.put('/admin/user/role', {
+      this.$axios.put('/admin/user/background/role', {
         id: user.id,
         username: user.username,
         roles: selectedRoles
@@ -172,7 +172,7 @@ export default {
         return
       }
       this.dialogFormVisible2 = false
-      this.$axios.put('/admin/user/password', {
+      this.$axios.put('/admin/user/background/password', {
         username: user.username,
         password: this.resetPassword
       }).then(resp => {

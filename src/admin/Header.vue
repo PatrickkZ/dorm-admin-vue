@@ -88,7 +88,7 @@ export default {
         return
       }
       this.dialogFormVisible2 = false
-      this.$axios.put('/admin/user/modifyPassword', {
+      this.$axios.put('/admin/modifyPassword', {
         username: this.$store.state.username,
         originPassword: this.originPassword,
         resetPassword: this.resetPassword

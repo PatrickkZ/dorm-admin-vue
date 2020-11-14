@@ -157,7 +157,7 @@ export default {
   },
   methods: {
     loadDorms(){
-      this.$axios.get('/admin/dorm').then(resp => {
+      this.$axios.get('/admin/dorm/info').then(resp => {
         if (resp && resp.data.code === 200) {
           this.dorms = resp.data.result
           this.loading = false
@@ -180,7 +180,7 @@ export default {
     },
     modifyDormInfo(dorm){
       this.dialogFormVisible1 = false
-      this.$axios.put('/admin/dorm/update', {
+      this.$axios.put('/admin/dorm/info/update', {
         id: dorm.id,
         buildingNum: dorm.buildingNum,
         roomNum: dorm.roomNum,
@@ -200,7 +200,7 @@ export default {
     },
     addDorm(){
       this.dialogFormVisible2 = false
-      this.$axios.post('/admin/dorm/add', {
+      this.$axios.post('/admin/dorm/info/add', {
         buildingNum: this.newDorm.buildingNum,
         roomNum: this.newDorm.roomNum,
         capacity: this.newDorm.capacity,

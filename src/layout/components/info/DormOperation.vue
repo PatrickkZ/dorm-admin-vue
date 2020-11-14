@@ -112,7 +112,7 @@ export default {
     submitAssignForm(){
       this.dialogFormVisible1 = false
       this.$axios
-          .post('/admin/assign', {
+          .post('/admin/dorm/operation/assign', {
             studentNum: this.assignForm.studentNum,
             roomNum: this.assignForm.roomNum
           })
@@ -134,7 +134,7 @@ export default {
     submitCheckoutForm(){
       this.dialogFormVisible2 = false
       this.$axios
-          .post('/admin/checkout', {
+          .post('/admin/dorm/operation/checkout', {
             studentNum: this.checkoutForm.studentNum
           })
           .then(resp => {
@@ -155,7 +155,7 @@ export default {
     submitSwitchForm() {
       this.dialogFormVisible3 = false
       this.$axios
-          .post('/admin/switch', {
+          .post('/admin/dorm/operation/switch', {
             studentNum: this.switchForm.studentNum,
             toRoomNum: this.switchForm.toRoomNum
           })
